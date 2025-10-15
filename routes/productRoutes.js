@@ -10,11 +10,26 @@ router.get("/", async (req, res) => {
 
 // Add new product
 router.post("/", async (req, res) => {
-  const { name, costPrice, sellPrice, quantity } = req.body;
-  const newProduct = new Product({ name, costPrice, sellPrice, quantity });
-  await newProduct.save();
-  res.json(newProduct);
+  try {
+    const { name, brand, costPrice, sellingPrice, quantity, size, description } = req.body;
+
+    const product = new Product({
+      name,
+      brand,
+      costPrice,
+      sellingPrice,
+      quantity,
+      size,        // optional
+      description  // optional
+    });
+
+    await product.save();
+    res.status(201).json(product);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
+
 
 // Update product
 router.put("/:id", async (req, res) => {
