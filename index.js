@@ -20,7 +20,10 @@ mongoose.connect(MONGO_URL)
 import productRoutes from "./routes/productRoutes.js";
 import saleRoutes from "./routes/salesRoutes.js";
 import billingRoutes from "./routes/billingRoutes.js"
+import authRoutes from "./routes/authRoutes.js"
 
+
+app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/sales", saleRoutes);
 app.use("/api/bills", billingRoutes);

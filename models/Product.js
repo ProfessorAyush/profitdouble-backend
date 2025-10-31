@@ -12,6 +12,7 @@ const productSchema = new mongoose.Schema({
     depth: { type: Number }
   },
   description: { type: String }, // optional
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User",required: true} 
 }, { timestamps: true });
 
 
