@@ -7,7 +7,7 @@ dotenv.config();
 const router = express.Router();
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-router.post("/chat", async (req, res) => {
+router.post("/chat", protect, async (req, res) => {
   try {
     const { prompt } = req.body;
 
